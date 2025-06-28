@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 public static class Arrays
 {
     /// <summary>
@@ -13,7 +15,13 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        double[] multiples = new double[length]; // Create an array of doubles with the specified length
+        multiples[0] = number; // Set the first element of the array to the input number
+        for (int i = 1; i < length; i++) // Fill the array with multiples of the number
+        {
+            multiples[i] = multiples[i - 1] + number; // Each element is the previous one plus the number
+        }
+        return multiples; // Return the array containing the multiples
     }
 
     /// <summary>
@@ -29,5 +37,29 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        if (amount == 0 || data.Count == 0) // If the amount is zero or the list is empty, do nothing
+        {
+            return; // Exit the function early
+        }
+
+        List<int> rotated = new List<int>(); // Create a new list to hold the rotated elements
+        for (int i = 0; i < data.Count; i++) // Iterate through each element in the original list
+        {
+            int pos = i; // Start with the current index as the position
+            for (int mov = 0; mov < amount; mov++) // Move the position to the right by the specified amount
+            {
+                pos--; // Move the position to the left by one
+                if (pos < 0) // If the position goes below zero, wrap around to the end of the list
+                {
+                    pos = data.Count - 1;
+                }
+            }
+            rotated.Add(data[pos]); // Add the element at the new position to the rotated list
+        }
+        for (int i = 0; i < data.Count; i++) // Iterate through the original list to update it
+        {
+            data[i] = rotated[i]; // Replace each element in the original list with the corresponding element from the rotated list
+        }
     }
 }
