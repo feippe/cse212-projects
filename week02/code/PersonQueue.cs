@@ -14,7 +14,7 @@ public class PersonQueue
     public void Enqueue(Person person)
     {
         //_queue.Insert(0, person);
-        _queue.Add(person);
+        _queue.Add(person); // I changed this to add to the end of the queue
     }
 
     public Person Dequeue()
