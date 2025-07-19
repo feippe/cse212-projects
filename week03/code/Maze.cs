@@ -33,6 +33,12 @@ public class Maze
     public void MoveLeft()
     {
         // FILL IN CODE
+        var currentPosition = (_currX, _currY); // Get the current position as a tuple
+        if (!_mazeMap.ContainsKey(currentPosition) || !_mazeMap[currentPosition][0]) // Check if the current position exists in the maze map and if moving left is allowed
+        {
+            throw new InvalidOperationException("Can't go that way!"); // If not, throw an exception
+        }
+        _currX -= 1; // Move left by decreasing the x-coordinate
     }
 
     /// <summary>
@@ -42,6 +48,12 @@ public class Maze
     public void MoveRight()
     {
         // FILL IN CODE
+        var currentPosition = (_currX, _currY); // Get the current position as a tuple
+        if (!_mazeMap.ContainsKey(currentPosition) || !_mazeMap[currentPosition][1]) // Check if the current position exists in the maze map and if moving right is allowed
+        {
+            throw new InvalidOperationException("Can't go that way!"); // If not, throw an exception
+        }
+        _currX += 1; // Move right by increasing the x-coordinate
     }
 
     /// <summary>
@@ -51,6 +63,12 @@ public class Maze
     public void MoveUp()
     {
         // FILL IN CODE
+        var currentPosition = (_currX, _currY); // Get the current position as a tuple
+        if (!_mazeMap.ContainsKey(currentPosition) || !_mazeMap[currentPosition][2]) // Check if the current position exists in the maze map and if moving up is allowed
+        {
+            throw new InvalidOperationException("Can't go that way!"); // If not, throw an exception
+        }
+        _currY -= 1; // Move up by decreasing the y-coordinate
     }
 
     /// <summary>
@@ -60,6 +78,12 @@ public class Maze
     public void MoveDown()
     {
         // FILL IN CODE
+        var currentPosition = (_currX, _currY); // Get the current position as a tuple
+        if (!_mazeMap.ContainsKey(currentPosition) || !_mazeMap[currentPosition][3]) // Check if the current position exists in the maze map and if moving down is allowed
+        {
+            throw new InvalidOperationException("Can't go that way!"); // If not, throw an exception
+        }
+        _currY += 1; // Move down by increasing the y-coordinate
     }
 
     public string GetStatus()
